@@ -1,0 +1,25 @@
+@media only screen and (max-width: 676px) {
+    .list-item1 {
+        height: 17%;
+        width: 199px;
+        margin: 2%;
+    }
+
+    .quickHead {
+        margin-right: 0%;
+    }
+
+    .custom-bullet-list {
+        list-style-type: none; /* Remove default bullet points */
+        padding-left: 30px; /* Add padding for space before the custom symbol */
+    }
+
+    .custom-bullet-list li::before {
+        content: " >"; /* Define the custom symbol */
+        display: inline-block;
+        width: 20px; /* Adjust width for spacing */
+        text-align: center; /* Center the custom symbol */
+        margin-left: -20px; /* Offset to align with the text */
+        margin-right: 5px; /* Add spacing between symbol and text */
+    }
+}

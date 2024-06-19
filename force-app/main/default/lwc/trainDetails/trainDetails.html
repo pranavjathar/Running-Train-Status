@@ -1,0 +1,33 @@
+<template>
+    <lightning-card title="Train Info-Running Status" variant="narrow" icon-name="custom:custom36">
+
+        <div class="slds-grid slds-gutters list-item1">
+            <div class="slds-col slds-size_2-of-3">
+                <lightning-input placeholder="for eg: 12157, 22732" label="Enter Train Number" type="text"
+                    onchange={changeHandler} onkeypress={handleKeyPress} class="slds-p-around_small"></lightning-input>
+                <template if:true={inputError}>
+                    <div class="slds-text-color_error slds-m-top_x-small slds-p-around_small">Please enter a train
+                        number</div>
+                </template>
+            </div>
+            <div class="slds-col slds-size_1-of-3" style="padding-top: 35px">
+                <lightning-button label="Check Live Status" variant="brand" onclick={clickHandler}></lightning-button>
+            </div>
+        </div>
+
+        <template if:true={showSpinner}>
+            <lightning-spinner alternative-text="Loading"></lightning-spinner>
+        </template>
+
+        <template if:true={showTrainDetails}>
+            <div class="slds-p-left_small">
+                <div class="slds-text-heading_large slds-text-color_success">{trainDetails.train_name}</div>
+                <div class="slds-text-title">{trainDetails.updated_time}</div>
+                <div class="slds-p-top_x-small" style="height: 300px;">
+                    <lightning-datatable key-field="train_name" data={trainDetails.data} columns={columns}
+                        hide-checkbox-column="true"></lightning-datatable>
+                </div>
+            </div>
+        </template>
+    </lightning-card>
+</template>
